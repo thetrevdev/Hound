@@ -7,7 +7,7 @@ COPY . /go/src/github.com/hound-search/hound
 COPY default-config.json /data/config.json
 
 RUN apk update \
-	&& apk add go git subversion libc-dev mercurial bzr openssh \
+	&& apk add go git subversion libc-dev mercurial openssh \
 	&& go install github.com/hound-search/hound/cmds/houndd \
 	&& apk del go \
 	&& rm -f /var/cache/apk/* \
