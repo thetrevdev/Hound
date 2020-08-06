@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine/make
 
 ENV GOPATH /go
 
@@ -8,7 +8,7 @@ COPY default-config.json /data/config.json
 
 RUN apk update \
 	&& apk add go git subversion libc-dev mercurial openssh \
-	&& go install github.com/hound-search/hound/cmds/houndd \
+    && cd /go/src/github.com/hound-search/hound && make \
 	&& apk del go \
 	&& rm -f /var/cache/apk/* \
 	&& rm -rf /go/src /go/pkg

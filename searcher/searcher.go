@@ -410,6 +410,8 @@ func newSearcher(
 	opt := &index.IndexOptions{
 		ExcludeDotFiles: repo.ExcludeDotFiles,
 		SpecialFiles:    wd.SpecialFiles(),
+		ExcludePatterns: repo.ExcludePatterns,
+		IncludePatterns: repo.IncludePatterns,
 	}
 
 	rev, err := wd.PullOrClone(vcsDir, repo.Url)

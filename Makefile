@@ -14,10 +14,10 @@ ui: ui/bindata.go
 node_modules:
 	npm install
 
-$(GOPATH)/bin/houndd: ui/bindata.go $(SRCS)
+$(GOPATH)/bin/houndd: deps ui/bindata.go $(SRCS)
 	go install github.com/hound-search/hound/cmds/houndd
 
-$(GOPATH)/bin/hound: ui/bindata.go $(SRCS)
+$(GOPATH)/bin/hound: deps ui/bindata.go $(SRCS)
 	go install github.com/hound-search/hound/cmds/hound
 
 .build/bin/go-bindata:
@@ -37,3 +37,6 @@ test:
 
 clean:
 	rm -rf .build node_modules
+
+deps:
+	go get github.com/bmatcuk/doublestar
